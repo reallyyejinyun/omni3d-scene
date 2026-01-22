@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>react-impl</title>
+
+  <script>
+    return
+    /**
+     * 禁用f12和鼠标右键
+     * 用户已经打开控制台的话，一直刷新页面
+     */
+    document.addEventListener('keydown', function (event) {
+      // 禁用 F12
+      if (event.key === 'F12' || event.keyCode === 123) {
+        event.preventDefault();
+        return false;
+      }
+      // 禁用 Ctrl+Shift+I/J/C
+      if (event.ctrlKey && event.shiftKey && ['I', 'J', 'C', 'i', 'j', 'c'].includes(event.key)) {
+        event.preventDefault();
+        return false;
+      }
+      // 禁用 Ctrl+U (查看源码)
+      if (event.ctrlKey && (event.key === 'U' || event.key === 'u')) {
+        event.preventDefault();
+        return false;
+      }
+    });
+
+    document.addEventListener('contextmenu', function (event) {
+      event.preventDefault();
+    });
+
+    // 针对独立窗口和嵌入窗口的综合检测
+    (function () {
+      const detector = {
+        isOpen: false,
+        toString: function () {
+          this.isOpen = true;
+          return '';
+        }
+      };
+
+      function detect() {
+        detector.isOpen = false;
+
+        // 1. Getter 检测 (Chrome/Edge 常用)
+        const img = new Image();
+        Object.defineProperty(img, 'id', {
+          get: function () {
+            detector.isOpen = true;
+          }
+        });
+
+        // 2. 窗口尺寸检测 (仅嵌入式有效)
+        const threshold = 160;
+        const isDocked = (window.outerWidth - window.innerWidth > threshold) ||
+          (window.outerHeight - window.innerHeight > threshold);
+
+        // 3. 触发检测
+        console.log(img, detector);
+        console.clear();
+
+        // 4. Time-based Debugger 检测 (作为独立窗口的备选，前提是未禁用断点)
+        const start = performance.now();
+        debugger;
+        const end = performance.now();
+
+        if (detector.isOpen || isDocked || (end - start > 100)) {
+          window.location.replace("about:blank"); // 或者 reload
+        }
+      }
+
+      setInterval(detect, 1000);
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>

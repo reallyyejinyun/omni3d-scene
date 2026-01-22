@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@theme {
+  /* Tailwind v4 可以在这里扩展主题，或者直接通过插件加载旧配置 */
+}
+
+@layer base {
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #0a0a0a;
+    color: #e5e5e5;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #444;
+  }
+
+  .canvas-container canvas {
+    display: block;
+  }
+
+  /* Ant Design Theme Overrides */
+  .ant-modal-content {
+    background: #1a1a1a !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .ant-modal-header {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    padding-bottom: 16px !important;
+  }
+
+  .ant-modal-title {
+    color: white !important;
+  }
+
+  .ant-modal-close {
+    color: rgba(255, 255, 255, 0.45) !important;
+  }
+
+  .ant-modal-close:hover {
+    color: white !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+  }
+
+  /* Table Dark Styles */
+  .custom-antd-table .ant-table,
+  .custom-table .ant-table {
+    background: transparent !important;
+    color: #9ca3af !important;
+  }
+
+  .custom-antd-table .ant-table-thead>tr>th,
+  .custom-table .ant-table-thead>tr>th {
+    background: rgba(255, 255, 255, 0.02) !important;
+    color: #6b7280 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    font-size: 10px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    font-weight: 900 !important;
+  }
+
+  .custom-antd-table .ant-table-tbody>tr>td,
+  .custom-table .ant-table-tbody>tr>td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+    padding: 16px !important;
+  }
+
+  .custom-antd-table .ant-table-tbody>tr:hover>td,
+  .custom-table .ant-table-tbody>tr:hover>td {
+    background: rgba(255, 255, 255, 0.04) !important;
+  }
+
+  .ant-pagination .ant-pagination-item a {
+    color: #666 !important;
+  }
+
+  .ant-pagination .ant-pagination-item-active {
+    background: rgba(147, 51, 234, 0.1) !important;
+    border-color: #9333ea !important;
+  }
+
+  .ant-pagination .ant-pagination-item-active a {
+    color: #a855f7 !important;
+  }
+
+  /* Select / Input Overrides */
+  .premium-select .ant-select-selector {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    color: white !important;
+  }
+
+  .premium-select.ant-select-focused .ant-select-selector {
+    border-color: #9333ea !important;
+    box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.1) !important;
+  }
+
+  .premium-select-popup {
+    background-color: #1a1a1a !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 4px !important;
+  }
+
+  .premium-select-popup .ant-select-item {
+    color: rgba(255, 255, 255, 0.6) !important;
+    border-radius: 8px !important;
+    margin: 2px 0 !important;
+    transition: all 0.2s !important;
+  }
+
+  .premium-select-popup .ant-select-item-option-active {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: white !important;
+  }
+
+  .premium-select-popup .ant-select-item-option-selected {
+    background-color: rgba(147, 51, 234, 0.2) !important;
+    color: #a855f7 !important;
+    font-weight: 600 !important;
+  }
+}
